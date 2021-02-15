@@ -1,0 +1,17 @@
+module.exports = {
+    name: 'clean',
+    description: "Delete Specified Amount Of Messages. Anyone can delete messages",
+    async execute(msg, args2){
+        if(!args2[0]) return msg.reply('Please enter the amount of messages you want to delete.');
+        if(isNaN(args2[0])) return msg.reply("Please enter value in Numbers");
+
+        if(args2[0] > 100) return msg.channel.reply("You cant delete more than 100 at a time");
+        if(args2[0] < 1) return msg.reply("You must delete atleast one message");
+        
+        await msg.channel.messages.fetch({limit: args2[0]}).then(messages =>{
+            msg.channel.bulkDelete(messages);
+        })
+
+
+    }
+}

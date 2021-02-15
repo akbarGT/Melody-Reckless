@@ -1,0 +1,6 @@
+.then(msg => {
+            msg.delete({
+                timeout: 120000
+                ///or 1000 * 12 
+            })
+        })

@@ -1,0 +1,16 @@
+module.exports =  {
+    name: 'setstatus',
+    description: "Changes BOT's Discord Status",
+    async execute(msg, args2, discordClient, currentPlayingTitle, title) {
+
+        const stts = await title
+        discordClient.user.setPresence({
+            activity:{
+                name: stts,
+                type: 0,
+            }
+        })
+        .catch(console.log)(err => msg.reply(`Something went wrong... ${err}`));
+        }
+
+    }
